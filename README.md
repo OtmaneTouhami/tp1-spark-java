@@ -313,27 +313,11 @@ Endpoints (if images are available):
 These screenshots confirm correct execution and display of expected results in the console.
 
 
-## 10) Best practices, limits, and possible improvements
-- Logging: `log4j2.properties` configured to reduce noise (`WARN`).
-- Parsing resilience: `Exercice2` filters non-conforming lines; we could log the number of ignored lines.
-- Unit tests: add tests for the `LogEntry.parse` method (happy path and failure cases).
-- I/O parameterization: externalize file paths via command-line arguments or environment variables.
-- Performance: `cache()` is appropriate; for very large volumes, prefer `persist(StorageLevel.MEMORY_AND_DISK)` if memory is limited.
-- Packaging/Run: add the `exec-maven-plugin` to simplify running via `mvn exec:java`.
-
-
-## 11) Troubleshooting
-- "File not found" error: run from the project root; verify that `data/ventes.txt` and `data/access.log` exist.
-- Java version errors: this project targets Java 21; check `java -version` and `mvn -v`.
-- `spark-submit` not found: install Apache Spark locally or run from the IDE.
-- Too many logs: ensure `src/main/resources/log4j2.properties` is packaged; otherwise set `-Dorg.apache.logging.level=ERROR` in the JVM.
-
-
-## 12) References
+## 10) References
 - Apache Spark RDD Programming Guide (Scala/Java): https://spark.apache.org/docs/latest/rdd-programming-guide.html
 - JavaSparkContext API: https://spark.apache.org/docs/latest/api/java/
 - Regular expression and formats: Apache Common/Combined Log Format
 
 
-## 13) Conclusion
+## 11) Conclusion
 This lab illustrates the basics of distributed analysis with Spark via the Java RDD API: reading files, transformations, key-based aggregations, and simple statistics on logs. The screenshots demonstrate correct behavior. The code follows good practices for readability, performance (caching), and robustness (filtering invalid inputs).
